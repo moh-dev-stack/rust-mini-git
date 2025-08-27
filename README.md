@@ -157,33 +157,6 @@ cat .minigit/index.json               # a.txt now maps to the NEW hash
 
 ---
 
-## Learning Notes (Interview Talking Points)
-
-* **Content-addressed storage:** files are stored by the hash of their content → built-in **integrity** and **dedup**.
-* **Immutable blobs:** a new version creates a new blob (no in-place mutation).
-* **Clear separation of concerns:**
-
-  * blobs (raw content),
-  * index (staging map path→blob),
-  * (future) commits (history snapshots).
-* **Ergonomic error handling:** `anyhow::Result` + `?` + optional `.with_context(...)` for friendly messages.
-* **Security note:** this project uses SHA-1 for educational parity with classic Git. For new systems you’d consider SHA-256.
-
----
-
-## Run Tests
-
-```bash
-cargo test
-```
-
-Included:
-
-* Known SHA-1 vectors (e.g., `"hello"` → `aaf4c6...9434d`)
-* Hex formatting sanity checks
-
----
-
 ## Next Steps / Roadmap
 
 * **`commit -m "<msg>"`**
